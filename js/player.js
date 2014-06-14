@@ -3,6 +3,7 @@ define(['crafty'], function(Crafty) {
   Crafty.c("Player", {
     init: function() {
 	  var DEFAULT_SPEED = 5;
+	  var LEVEL_WIDTH = 900;
 	  var jumpspeed = 0;
 	  var ylast = -1;
 	  var canjump = false;
@@ -19,7 +20,7 @@ define(['crafty'], function(Crafty) {
 			if(this.isDown('RIGHT_ARROW')){this.x = this.x + DEFAULT_SPEED};
 			//Keeps character from going off course
 			if (this.x < 0){this.x = 0}; 
-			if (this.x > 900){this.x = 900};
+			if (this.x > LEVEL_WIDTH + this.w){this.x = LEVEL_WIDTH + this.w};
 			//Jumping
 			canjump = (jumpspeed == 0 && ylast == this.y);
 			ylast = this.y;
