@@ -2,7 +2,8 @@ requirejs.config({
     baseUrl: 'js/lib',
     paths: {
         app: '../desert',
-        crafty: 'crafty/dist/crafty'
+        crafty: 'crafty/dist/crafty',
+        lodash: 'lodash/dist/lodash'
     }
 });
 
