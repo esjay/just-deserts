@@ -1,10 +1,11 @@
 define(['crafty'], function(Crafty) {
 
   Crafty.c("Player", {
+
     init: function() {
 	  var GRAVITY_CONSTANT = .5;
 	  var DEFAULT_SPEED = 5;
-	  var LEVEL_WIDTH = 950;
+	  var levelWidth = 1820;
 	  var JUMPSPEED = 14;
 	  var canjump = false;
 	  var yaccel = 0;
@@ -14,20 +15,26 @@ define(['crafty'], function(Crafty) {
 		  .bind('EnterFrame', function() //EnterFrame event is called once per cycle
 		  {
 			//Moves left and right
-			if(this.isDown('LEFT_ARROW'))
-			{
-				this.x -= DEFAULT_SPEED;
-				if(this.hit('PGrav')){this.x += DEFAULT_SPEED};
-			}
-			if(this.isDown('RIGHT_ARROW'))
-			{
-				this.x += DEFAULT_SPEED;
-				if(this.hit('PGrav')){this.x -= DEFAULT_SPEED};
-			}
+      if(this.isDown('LEFT_ARROW'))
+      {
+        this.x -= DEFAULT_SPEED;
+        if(this.hit('PGrav')){this.x += DEFAULT_SPEED;}
+        if (400 <= this.x) {
+          Crafty.viewport.scroll('x', Crafty.viewport.x + DEFAULT_SPEED);
+        }
+      }
+      if(this.isDown('RIGHT_ARROW'))
+      {
+        this.x += DEFAULT_SPEED;
+        if(this.hit('PGrav')){this.x -= DEFAULT_SPEED;}
+        if (400 <= this.x && (this.x + this.w) - 1000 <= this.levelWidth) {
+          Crafty.viewport.scroll('x', Crafty.viewport.x - DEFAULT_SPEED);
+        }
+      }
 			//
 			//Keeps character from going off course
 			if (this.x < 0){this.x = 0};
-			if (this.x > LEVEL_WIDTH + this.w){this.x = LEVEL_WIDTH + this.w};
+			if ((this.x + this.w) > levelWidth){this.x = levelWidth - this.w};
 			//Gravity
 			yaccel += GRAVITY_CONSTANT;
 			if (!this.hit('PGrav'))
@@ -70,8 +77,12 @@ define(['crafty'], function(Crafty) {
 				yaccel = 0;
 			}
 		  });
-
     },
+    setLevelData: function(data) {
+      this.levelWidth = data.width;
+      return this;
+    },
+
     thirst: 0,
     health: 10000,
     shaded: false,
@@ -100,8 +111,8 @@ define(['crafty'], function(Crafty) {
   });
 
   return {
-    createPlayer: function(attributes) {
-      return Crafty.e('Player').attr(attributes);
+    createPlayer: function(attributes, leveldata) {
+      return Crafty.e('Player').setLevelData(leveldata).attr(attributes);
     }
   };
 });
