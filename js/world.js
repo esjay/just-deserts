@@ -1,8 +1,8 @@
 define(['require', 'lodash', 'crafty', './player', './block'],
  function(require, _, Crafty, player, block) {
   return {
-    width: 50,
-    height: 50,
+    width: 41,
+    height: 79,
     createWorld: function(worldData) {
       Crafty.init(worldData.width, worldData.height);
       Crafty.background('black');
