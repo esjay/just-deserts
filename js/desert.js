@@ -1,16 +1,19 @@
 define(['crafty'], function(Crafty) {
   Game = {
+
     start: function() {
-      Crafty.init(300, 300);
+      Crafty.init(1000, 700);
 
       Crafty.background('black');
 
-      var box = Crafty.e('2D, Canvas, Color')
+      var box = Crafty.e('2D, Canvas, Color, Fourway')
         .attr({
           x: 10, y: 10, w: 100, h: 100
         })
-        .color('green');
+        .color('green')
+      .fourway(10);
     }
   };
+
   Game.start();
 });
