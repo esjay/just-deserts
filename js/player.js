@@ -10,7 +10,7 @@ define(['crafty'], function(Crafty) {
 	  var canjump = false;
 	  var yaccel = 0;
 	  var reset_yaccel = false;
-      this.requires('2D, Canvas, Color, Keyboard, Collision, Player')
+      this.requires('2D, Canvas, Color, Keyboard, Collision')
           .color('green')
 		  .bind('EnterFrame', function() //EnterFrame event is called once per cycle
 		  {
