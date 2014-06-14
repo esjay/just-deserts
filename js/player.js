@@ -15,32 +15,32 @@ define(['crafty', './components/vitality'], function(Crafty) {
 		  .bind('EnterFrame', function() //EnterFrame event is called once per cycle
 		  {
 			//Moves left and right
-      if(this.isDown('LEFT_ARROW'))
-      {
-        this.x -= DEFAULT_SPEED;
-        if(this.hit('PGrav')){this.x += DEFAULT_SPEED;}
-        if (400 <= this.x) {
-          Crafty.viewport.scroll('x', Crafty.viewport.x + DEFAULT_SPEED);
-        }
-      }
-      if(this.isDown('RIGHT_ARROW'))
-      {
-        this.x += DEFAULT_SPEED;
-        if(this.hit('PGrav')){this.x -= DEFAULT_SPEED;}
-        if (400 <= this.x && (this.x + this.w) - 1000 <= this.levelWidth) {
-          Crafty.viewport.scroll('x', Crafty.viewport.x - DEFAULT_SPEED);
-        }
-      }
-			//
+			if(this.isDown('LEFT_ARROW'))
+			{
+				this.x -= DEFAULT_SPEED;
+				if(this.hit('PGrav')){this.x += DEFAULT_SPEED;}//Don't move if you will end up overlapping a wall
+				if (400 <= this.x) {
+					Crafty.viewport.scroll('x', Crafty.viewport.x + DEFAULT_SPEED);
+				}
+			}
+			if(this.isDown('RIGHT_ARROW'))
+			{
+				this.x += DEFAULT_SPEED;
+				if(this.hit('PGrav')){this.x -= DEFAULT_SPEED;}
+				if (400 <= this.x && (this.x + this.w) - 1000 <= this.levelWidth) {
+					Crafty.viewport.scroll('x', Crafty.viewport.x - DEFAULT_SPEED);
+				}
+			}
 			//Keeps character from going off course
 			if (this.x < 0){this.x = 0};
 			if ((this.x + this.w) > levelWidth){this.x = levelWidth - this.w};
 			//Gravity
 			yaccel += GRAVITY_CONSTANT;
+			//This block handles hitting a platform from the top or bottom
 			if (!this.hit('PGrav'))
 			{
 				this.y += yaccel;
-				//If we're falling into an object, we need to dig ourselves out
+				//If we're falling into an object, we need to dig ourselves out, and vice versa
 				while(this.hit('PGrav'))
 				{
 					reset_yaccel = true;
