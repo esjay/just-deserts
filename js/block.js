@@ -8,9 +8,9 @@ define(['lodash', 'crafty'], function(_, Crafty) {
 
   return {
     createBlock: function(attributes) {
-        var createdBlock = Crafty.e('Shade').attr(attributes);
+        var createdBlock = Crafty.e('Block').attr(attributes);
         var collisionAttributes = _.extend({}, attributes, {y: attributes.y + attributes.h, h: 500});
-        var impliedCollision = Crafty.e("2D, Collision, WiredHitBox")
+        var impliedCollision = Crafty.e("2D, Collision, WiredHitBox, Shade")
             .attr(collisionAttributes)
             .collision()
             .onHit("Player", function(target) {

@@ -11,7 +11,7 @@ define(['crafty'], function(Crafty) {
 	  var jumptimer = 0; //After a while, whether or not you're holding down the up key won't matter
 	  var yaccel = 0;
 	  var center = 0;
-      this.requires('2D, Canvas, Color, Keyboard, Collision')
+      this.requires('2D, Canvas, Color, Keyboard, Collision, Player')
           .color('green')
 		  .bind('EnterFrame', function() //EnterFrame event is called once per cycle
 		  {
