@@ -10,9 +10,14 @@ define(['crafty'], function(Crafty) {
 	  var canjump = false;
 	  var jumptapering = false; //Makes downward fall once up arrow is released smoother
 	  var jumptimer = 0; //After a while, whether or not you're holding down the up key won't matter
+<<<<<<< HEAD
 	  var yaccel = 0;
 	  var center = 0;
       this.requires('2D, Canvas, Color, Keyboard, Collision')
+=======
+      this.requires('2D, Canvas, Color, Gravity, Keyboard, Collision, Player') //Twoway')
+          //.twoway(5, 3)
+>>>>>>> origin/master
           .color('green')
 		  .bind('EnterFrame', function() //EnterFrame event is called once per cycle
 		  {
@@ -20,6 +25,7 @@ define(['crafty'], function(Crafty) {
 			if(this.isDown('LEFT_ARROW')){this.x = this.x - DEFAULT_SPEED};
 			if(this.isDown('RIGHT_ARROW')){this.x = this.x + DEFAULT_SPEED};
 			//Keeps character from going off course
+<<<<<<< HEAD
 			if (this.x < 0){this.x = 0}; 
 			if (this.x > LEVEL_WIDTH + this.w){this.x = LEVEL_WIDTH + this.w};
 			//Gravity
@@ -47,6 +53,10 @@ define(['crafty'], function(Crafty) {
 				}
 			}
 
+=======
+			if (this.x < 0){this.x = 0};
+			if (this.x > 900){this.x = 900};
+>>>>>>> origin/master
 			//Jumping
 			canjump = (jumpspeed == 0 && ylast == this.y);
 			ylast = this.y;
