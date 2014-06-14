@@ -1,16 +1,18 @@
 define(['crafty'], function(Crafty) {
 
   Crafty.c("Player", {
+
     init: function() {
-	  var GRAVITY_CONSTANT = .3;
-	  var DEFAULT_SPEED = 5;
-	  var LEVEL_WIDTH = 900;
-	  var jumpspeed = 0;
-	  var canjump = false;
-	  var jumptapering = false; //Makes downward fall once up arrow is released smoother
-	  var jumptimer = 0; //After a while, whether or not you're holding down the up key won't matter
-	  var yaccel = 0;
-	  var center = 0;
+      var GRAVITY_CONSTANT = 0.3,
+          DEFAULT_SPEED = 5,
+          levelWidth = 1820,
+          jumpspeed = 0,
+          canjump = false,
+          jumptapering = false, //Makes downward fall once up arrow is released smoother
+          jumptimer = 0, //After a while, whether or not you're holding down the up key won't matter
+          yaccel = 0,
+          center = 0;
+
       this.requires('2D, Canvas, Color, Keyboard, Collision')
           .color('green')
 		  .bind('EnterFrame', function() //EnterFrame event is called once per cycle
@@ -29,7 +31,7 @@ define(['crafty'], function(Crafty) {
 			//
 			//Keeps character from going off course
 			if (this.x < 0){this.x = 0};
-			if (this.x > LEVEL_WIDTH + this.w){this.x = LEVEL_WIDTH + this.w};
+			if ((this.x + this.w) > levelWidth){this.x = levelWidth - this.w};
 			//Gravity
 			yaccel += GRAVITY_CONSTANT;
 			if(!this.hit('PGrav'))
@@ -84,12 +86,16 @@ define(['crafty'], function(Crafty) {
 				jumptimer = 0;
 			}
 		  });
-    }
+    },
+    setLevelData: function(data) {
+      this.levelWidth = data.width;
+      return this;
+    },
   });
 
   return {
-    createPlayer: function(attributes) {
-      return Crafty.e('Player').attr(attributes);
+    createPlayer: function(attributes, leveldata) {
+      return Crafty.e('Player').setLevelData(leveldata).attr(attributes);
     }
   };
 });
