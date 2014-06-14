@@ -44,6 +44,7 @@ define(['crafty'], function(Crafty) {
 					jumptapering = true;
 				}
 			}
+      this.doTick();
 		  })
 		  .bind('KeyUp', function(e)
 		  {
@@ -52,6 +53,32 @@ define(['crafty'], function(Crafty) {
 				jumptimer = 0;
 			}
 		  });
+
+    },
+    thirst: 0,
+    health: 10000,
+    shaded: false,
+    increaseThirst: function() {
+      this.thirst++;
+      return this;
+    },
+    damageBy: function(damageAmount) {
+      damageAmount = damageAmount || 1;
+      this.health -= damageAmount;
+      // console.log("health is", this.health);
+      return this;
+    },
+    markAsShaded: function(value) {
+      this.shaded = value;
+    },
+    markAsUnshaded: function() {
+      this.shaded = false;
+    },
+    doTick: function() {
+      if(!this.shaded) {
+        this.damageBy(1);
+      }
+      this.increaseThirst();
     }
   });
 
