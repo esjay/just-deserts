@@ -5,7 +5,13 @@ define(['crafty'], function(Crafty) {
       this.requires('2D, Canvas, Color, Gravity, Twoway')
           .twoway(5, 3)
           .color('green')
-          .gravity("Floor");
+          .gravity("Floor")
+		  .bind('EnterFrame', function()
+		  {
+			//Keeps character from going off course
+			if (this.x < 0){this.x = 0}; 
+			if (this.x > 900){this.x = 900};
+		  });
     }
   });
 
