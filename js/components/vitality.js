@@ -22,7 +22,6 @@ define(['crafty'], function(Crafty) {
     damageBy: function(damageAmount) {
       damageAmount = damageAmount || 1;
       this.health -= damageAmount;
-      console.log("health is", this.health);
       return this;
     },
     markAsShaded: function(value) {
