@@ -2,8 +2,8 @@ define(['crafty'], function(Crafty) {
 
   Crafty.c("Player", {
     init: function() {
-      this.requires('2D, Canvas, Color, Gravity, Twoway')
-      .twoway(5, 3)
+      this.requires('2D, Canvas, Color, Gravity, Twoway, Player')
+      .twoway(5, 11)
       .color('green')
       .gravity("PGrav")
       .bind('EnterFrame', function() {
