@@ -6,6 +6,7 @@
     "**/*.txt"
   ],
   "dependencies": {
-    "crafty": "0.6.2"
+    "crafty": "0.6.2",
+    "requirejs": "~2.1.14"
   }
 }

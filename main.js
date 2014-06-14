@@ -1,14 +1,11 @@
-Game = {
+requirejs.config({
+    baseUrl: 'js/lib',
+    paths: {
+        app: '../desert',
+        crafty: 'crafty/dist/crafty'
+    }
+});
 
-  start: function() {
-    Crafty.init(300, 300);
-
-    Crafty.background('black');
-
-    var box = Crafty.e('2D, Canvas, Color')
-      .attr({
-        x: 10, y: 10, w: 100, h: 100
-      })
-      .color('green');
-  }
-};
+// Start loading the main app file. Put all of
+// your application logic in there.
+requirejs(['app']);
