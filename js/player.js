@@ -1,4 +1,4 @@
-define(['crafty'], function(Crafty) {
+define(['crafty', './components/vitality'], function(Crafty) {
 
   Crafty.c("Player", {
 
@@ -10,7 +10,7 @@ define(['crafty'], function(Crafty) {
 	  var canjump = false;
 	  var yaccel = 0;
 	  var reset_yaccel = false;
-      this.requires('2D, Canvas, Color, Keyboard, Collision')
+      this.requires('2D, Canvas, Color, Keyboard, Vitality')
           .color('green')
 		  .bind('EnterFrame', function() //EnterFrame event is called once per cycle
 		  {
@@ -68,7 +68,6 @@ define(['crafty'], function(Crafty) {
 				yaccel -= JUMPSPEED;
 				canjump = false;
 			}
-      this.doTick();
 		  })
 		  .bind('KeyUp', function(e)
 		  {
@@ -81,32 +80,6 @@ define(['crafty'], function(Crafty) {
     setLevelData: function(data) {
       this.levelWidth = data.width;
       return this;
-    },
-
-    thirst: 0,
-    health: 10000,
-    shaded: false,
-    increaseThirst: function() {
-      this.thirst++;
-      return this;
-    },
-    damageBy: function(damageAmount) {
-      damageAmount = damageAmount || 1;
-      this.health -= damageAmount;
-      // console.log("health is", this.health);
-      return this;
-    },
-    markAsShaded: function(value) {
-      this.shaded = value;
-    },
-    markAsUnshaded: function() {
-      this.shaded = false;
-    },
-    doTick: function() {
-      if(!this.shaded) {
-        this.damageBy(1);
-      }
-      this.increaseThirst();
     }
   });
 
