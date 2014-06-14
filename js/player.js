@@ -4,7 +4,7 @@ define(['crafty'], function(Crafty) {
     init: function() {
 	  var GRAVITY_CONSTANT = .3;
 	  var DEFAULT_SPEED = 5;
-	  var LEVEL_WIDTH = 900;
+	  var LEVEL_WIDTH = 950;
 	  var jumpspeed = 0;
 	  var canjump = false;
 	  var jumptapering = false; //Makes downward fall once up arrow is released smoother
