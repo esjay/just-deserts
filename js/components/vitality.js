@@ -14,6 +14,9 @@ define(['lodash', 'crafty', '../hud'], function(_, Crafty, hud) {
               this.damageBy(1.85);
             }
             this.increaseThirst();
+            if (this.health < 0) {
+              this.reset();
+            }
           });
     },
 
