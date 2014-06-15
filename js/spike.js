@@ -1,4 +1,4 @@
-define(['crafty', './death'], function(Crafty, death){
+define(['crafty'], function(Crafty){
   Crafty.sprite("assets/img/spike.png", {spike_gfx:[0,0,40,40]});
   Crafty.c('Spike', {
     init: function() {
@@ -9,13 +9,7 @@ define(['crafty', './death'], function(Crafty, death){
   return {
     createSpike: function(attributes) {
       var hitbox = new Crafty.polygon([0,0], [attributes.w,0], [attributes.w * 0.5, attributes.h]),
-          entity = Crafty.e('Spike, Collision, Particles').attr(attributes)
-		  .collision(hitbox)
-		  .onHit("Player", function()
-		  {
-			//var d = Crafty.e("Death");
-			death.createDeath(attributes);
-		  });
+          entity = Crafty.e('Spike, Collision').attr(attributes).collision(hitbox);
       if(attributes.flipped) entity.flip('Y')
       return entity;
     }
