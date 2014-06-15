@@ -1,8 +1,10 @@
 define(['lodash', 'crafty', '../hud'], function(_, Crafty, hud) {
+  var defaultThirst = 0,
+      defaultHealth = 1000;
 
   Crafty.c('Vitality', {
-    thirst: 0,
-    health: 1000,
+    thirst: defaultThirst,
+    health: defaultHealth,
     shadedBy: [],
 
     init: function() {
@@ -38,8 +40,8 @@ define(['lodash', 'crafty', '../hud'], function(_, Crafty, hud) {
       this.shadedBy = _.without(this.shadedBy, shadingEntity);
     },
     resetVitality: function() {
-      this.thirst = 0;
-      this.health = 10000;
+      this.thirst = defaultThirst;
+      this.health = defaultHealth;
     }
   });
 
