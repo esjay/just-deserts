@@ -5,11 +5,11 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
     init: function() {
 	  var GRAVITY_CONSTANT = 0.5,
         DEFAULT_SPEED = 5,
-        levelWidth = 5200,
         JUMPSPEED = 14,
         canjump = false,
         yaccel = 0,
-        reset_yaccel = false;
+        reset_yaccel = false,
+        worldData = {};
 
       this.requires('2D, Canvas, Color, Keyboard, Vitality, ScrollView')
           .color('green')
@@ -28,7 +28,7 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 			}
 			//Keeps character from going off course
 			if (this.x < 0){this.x = 0};
-			if ((this.x + this.w) > levelWidth){this.x = levelWidth - this.w};
+			if ((this.x + this.w) > worldData.width){this.x = worldData.width - this.w};
 			//Gravity
 			yaccel += GRAVITY_CONSTANT;
 			//This block handles hitting a platform from the top or bottom
@@ -70,13 +70,25 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 			{
 				yaccel = 0;
 			}
-		  });
+		  })
+      .onHit('Spike', function() {
+
+      });
+    },
+
+    reset: function() {
+      this.resetVitality();
+
+    },
+    setWorldData: function(data) {
+      this.worldData = data;
+      return this;
     }
   });
 
   return {
-    createPlayer: function(attributes) {
-      return Crafty.e('Player').attr(attributes);
+    createPlayer: function(attributes, worldData) {
+      return Crafty.e('Player').attr(attributes).setWorldData(worldData);
     }
   };
 });

@@ -6,8 +6,7 @@ define(['require', 'lodash', 'crafty', './player', './block'],
     createWorld: function(worldData) {
       Crafty.init(1024, worldData.height);
       Crafty.background('black');
-      var ent = player.createPlayer(_.extend({ w: this.width, h: this.height }, worldData.start));
-      ent.setLevelData(worldData);
+      player.createPlayer(_.extend({ w: this.width, h: this.height }, worldData.start), worldData);
       _(worldData.platforms).each(function(platform) {
         block.createBlock(platform);
       });

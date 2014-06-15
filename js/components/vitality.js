@@ -31,6 +31,10 @@ define(['crafty', '../hud'], function(Crafty, hud) {
     },
     markAsUnshaded: function() {
       this.shaded = false;
+    },
+    resetVitality: function() {
+      this.thirst = 0;
+      this.health = 10000;
     }
   });
 
