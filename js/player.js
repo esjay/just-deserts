@@ -5,7 +5,7 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
     init: function() {
 	  var GRAVITY_CONSTANT = 0.5,
         DEFAULT_SPEED = 5,
-        levelWidth = 1820,
+        levelWidth = 5200,
         JUMPSPEED = 14,
         canjump = false,
         yaccel = 0,
