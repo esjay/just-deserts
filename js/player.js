@@ -20,17 +20,11 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 			{
 				this.x -= DEFAULT_SPEED;
 				if(this.hit('PGrav')){this.x += DEFAULT_SPEED;}//Don't move if you will end up overlapping a wall
-				// if (400 <= this.x) {
-				// 	Crafty.viewport.scroll('x', Crafty.viewport.x + DEFAULT_SPEED);
-				// }
 			}
 			if(this.isDown('RIGHT_ARROW'))
 			{
 				this.x += DEFAULT_SPEED;
 				if(this.hit('PGrav')){this.x -= DEFAULT_SPEED;}
-				// if (400 <= this.x && (this.x + this.w) - 1000 <= this.levelWidth) {
-				// 	Crafty.viewport.scroll('x', Crafty.viewport.x - DEFAULT_SPEED);
-				// }
 			}
 			//Keeps character from going off course
 			if (this.x < 0){this.x = 0};
