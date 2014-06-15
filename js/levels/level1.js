@@ -98,7 +98,7 @@ define([], function() {
       "y": 655,
       "w": 40,
       "h": 70,
-      "flipped": true
+      "rotation": 180
     },
     {
       "x": 1650,
@@ -111,7 +111,7 @@ define([], function() {
       "y": 685,
       "w": 40,
       "h": 40,
-      "flipped": true
+      "rotation": 180
     },
     {
       "x": 1940,
@@ -124,7 +124,7 @@ define([], function() {
       "y": 625,
       "w": 40,
       "h": 100,
-      "flipped": true
+      "rotation": 180
     },
     {
       "x": 2250,
@@ -137,7 +137,7 @@ define([], function() {
       "y": 645,
       "w": 40,
       "h": 80,
-      "flipped": true
+      "rotation": 180
     }
     ]
   };
