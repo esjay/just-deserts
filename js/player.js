@@ -14,6 +14,11 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 		dieing = false;
 		respawn_counter = 0;
         worldData = {};
+		Crafty.audio.add("scream", [
+			"assets/sfx/WilhelmScream.mp3",
+			"assets/sfx/WilhelmScream.wav",
+			"assets/sfx/WilhelmScream.ogg"
+		]);
 
       this.requires('2D, Canvas, Keyboard, Vitality, ScrollView, SpriteAnimation, character_gfx, PlayerSprite')
       .reel('PlayerRunning', 1000, 1, 0, 62)
@@ -21,7 +26,11 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 		  {
 			if (dieing)
 			{	
-				if(respawn_counter == 0){this.removeComponent("PlayerSprite", false);}
+				if(respawn_counter == 0)
+				{
+					this.removeComponent("PlayerSprite", false);
+					Crafty.audio.play("scream");
+				}
 				if(respawn_counter == 20)
 				{
 					this.addComponent("PlayerSprite");
