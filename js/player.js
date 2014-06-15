@@ -1,5 +1,7 @@
 define(['crafty', './components/vitality', './components/scrollview'], function(Crafty) {
-  Crafty.sprite("assets/img/character.png", { character_gfx: [0, 0, 49, 71] })
+  Crafty.sprite(33, 70, "assets/img/walkin.png", {
+      PlayerSprite: [2,0]
+  });
   Crafty.c("Player", {
 
     init: function() {
@@ -12,7 +14,8 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 		die_next_cycle = false;
         worldData = {};
 
-      this.requires('2D, Canvas, Keyboard, Vitality, ScrollView, character_gfx')
+      this.requires('2D, Canvas, Keyboard, Vitality, ScrollView, SpriteAnimation, character_gfx, PlayerSprite')
+      .reel('PlayerRunning', 1000, 1, 0, 62)
 		  .bind('EnterFrame', function() //EnterFrame event is called once per cycle
 		  {
 			if (die_next_cycle)
@@ -99,7 +102,9 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 
   return {
     createPlayer: function(attributes, worldData) {
-      return Crafty.e('Player').attr(attributes).setWorldData(worldData);
+      return Crafty.e('Player').attr(attributes).setWorldData(worldData)
+                .animate('PlayerRunning', -1)
+;
     }
   };
 });
