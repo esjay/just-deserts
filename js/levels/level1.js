@@ -14,113 +14,131 @@ define([], function() {
     },
     "platforms": [
     {
-	  "x": 10,
+      "x": 10,
       "y": 300,
       "w": 90,
-      "h": 10
-	},
-	{
+      "h": 10,
+      "image": "assets/img/upper_platform_tile.png"
+    },
+    {
       "x": 0,
       "y": 400,
       "w": 330,
-      "h": 368
+      "h": 368,
+      "image": "assets/img/upper_platform_tile.png"
     },
     {
       "x": 460,
       "y": 400,
       "w": 800,
-      "h": 25
+      "h": 25,
+      "image": "assets/img/upper_platform_tile.png"
     },
     {
       "x": 330,
       "y": 725,
       "w": 5000,
-      "h": 43
+      "h": 43,
+      "image": "assets/img/upper_platform_tile.png"
     },
     {
       "x": 350,
       "y": 560,
       "w": 90,
-      "h": 10
+      "h": 10,
+      "image": "assets/img/upper_platform_tile.png"
     },
     {
       "x": 510,
       "y": 630,
       "w": 90,
-      "h": 10
+      "h": 10,
+      "image": "assets/img/upper_platform_tile.png"
     },
     {
       "x": 800,
       "y": 585,
       "w": 90,
-      "h": 10
+      "h": 10,
+      "image": "assets/img/upper_platform_tile.png"
     },
     {
       "x": 665,
       "y": 550,
       "w": 90,
-      "h": 175
+      "h": 175,
+      "image": "assets/img/upper_platform_tile.png"
     },
     {
       "x": 935,
       "y": 550,
       "w": 90,
-      "h": 175
+      "h": 175,
+      "image": "assets/img/upper_platform_tile.png"
     },
     {
       "x": 1275,
       "y": 560,
       "w": 90,
-      "h": 10
+      "h": 10,
+      "image": "assets/img/upper_platform_tile.png"
     },
     {
       "x": 1380,
       "y": 400,
       "w": 1200,
-      "h": 25
+      "h": 25,
+      "image": "assets/img/upper_platform_tile.png"
     },
     {
       "x": 2595,
       "y": 560,
       "w": 90,
-      "h": 10
+      "h": 10,
+      "image": "assets/img/upper_platform_tile.png"
     },
     {
       "x": 2700,
       "y": 400,
       "w": 400,
-      "h": 25
-	},
+      "h": 25,
+      "image": "assets/img/upper_platform_tile.png"
+    },
     {
       "x": 3115,
       "y": 560,
       "w": 90,
-      "h": 10
-	},
+      "h": 10,
+      "image": "assets/img/upper_platform_tile.png"
+    },
     {
       "x": 3220,
       "y": 400,
       "w": 800,
-      "h": 25
-	},
+      "h": 25,
+      "image": "assets/img/upper_platform_tile.png"
+    },
     {
       "x": 3235,
       "y": 520,
       "w": 90,
-      "h": 500
-	},
+      "h": 500,
+      "image": "assets/img/upper_platform_tile.png"
+    },
     {
       "x": 3535,
       "y": 530,
       "w": 90,
-      "h": 105
-	},
+      "h": 105,
+      "image": "assets/img/upper_platform_tile.png"
+    },
     {
       "x": 3825,
       "y": 600,
       "w": 180,
-      "h": 500
-	}
+      "h": 500,
+      "image": "assets/img/upper_platform_tile.png"
+    }
     ],
     "spikes": [
     {
@@ -174,34 +192,34 @@ define([], function() {
       "w": 40,
       "h": 80,
       "rotation": 180
-	},
+    },
     {
       "x": 3285,
       "y": 540,
       "w": 40,
       "h": 60,
-	  "rotation": 270
-	},
+      "rotation": 270
+    },
     {
       "x": 3495,
       "y": 500,
       "w": 40,
       "h": 60,
-	  "rotation": 90
-	},
+      "rotation": 90
+    },
     {
       "x": 3585,
       "y": 580,
       "w": 40,
       "h": 60,
-	  "rotation": 270
-	},
+      "rotation": 270
+    },
     {
       "x": 3785,
       "y": 540,
       "w": 40,
       "h": 60,
-	  "rotation": 90
+      "rotation": 90
     }
     ]
   };

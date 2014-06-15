@@ -2,13 +2,15 @@ define(['lodash', 'crafty'], function(_, Crafty) {
   Crafty.sprite('assets/img/upper_platform_tile.png', { platform_gfx: [0, 0, 400, 25] });
   Crafty.c('Block', {
     init: function() {
-      this.requires('2D, Canvas, platform_gfx, PGrav');
+      this.requires('2D, DOM, Image, PGrav');
     }
   });
 
   return {
     createBlock: function(attributes) {
-        var createdBlock = Crafty.e('Block').attr(attributes);
+        var createdBlock = Crafty.e('Block')
+            .attr({ x: attributes.x, y: attributes.y, w: attributes.w, h: attributes.h })
+            .image(attributes.image, 'repeat');
         var collisionAttributes = _.extend({}, attributes, {y: attributes.y + attributes.h, h: 500});
         var impliedCollision = Crafty.e("2D, Collision, Shade")
             .attr(collisionAttributes)
