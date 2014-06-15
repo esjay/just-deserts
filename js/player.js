@@ -77,16 +77,12 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 				yaccel = 0;
 			}
 		  });
-    },
-    setLevelData: function(data) {
-      this.levelWidth = data.width;
-      return this;
     }
   });
 
   return {
-    createPlayer: function(attributes, leveldata) {
-      return Crafty.e('Player').setLevelData(leveldata).attr(attributes);
+    createPlayer: function(attributes) {
+      return Crafty.e('Player').attr(attributes);
     }
   };
 });

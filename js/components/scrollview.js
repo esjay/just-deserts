@@ -11,8 +11,8 @@ define(['crafty'], function(Crafty) {
             if (this.isDown('LEFT_ARROW') && this.viewport.x <= 0 && this.oldX !== this.x) {
               this.viewport.scroll('x', this.viewport.x + Math.abs(this.x - this.oldX));
             } else if(this.isDown('RIGHT_ARROW')) {
-              if (400 <= this.x && (this.x + this.w) - 1000 <= this.levelWidth) {
-                this.viewport.scroll('x', this.viewport.x - 5);
+              if (400 <= this.x && this.levelWidth > (1024 - this.viewport.x)) {
+                this.viewport.scroll('x', this.viewport.x - Math.abs(this.x - this.oldX));
               }
             }
             this.oldX = this.x;
