@@ -24,8 +24,12 @@ define([], function() {
       "x": 0,
       "y": 400,
       "w": 330,
+<<<<<<< HEAD
       "h": 368,
       "image": "assets/img/upper_platform_tile.png"
+=======
+      "h": 330
+>>>>>>> 45cb4b82c4db67aefebca4ae219c1e725146a82b
     },
     {
       "x": 460,
@@ -35,11 +39,16 @@ define([], function() {
       "image": "assets/img/upper_platform_tile.png"
     },
     {
-      "x": 330,
+      "x": 0,
       "y": 725,
+<<<<<<< HEAD
       "w": 5000,
       "h": 43,
       "image": "assets/img/upper_platform_tile.png"
+=======
+      "w": 4000,
+      "h": 43
+>>>>>>> 45cb4b82c4db67aefebca4ae219c1e725146a82b
     },
     {
       "x": 350,
@@ -122,7 +131,7 @@ define([], function() {
       "x": 3235,
       "y": 520,
       "w": 90,
-      "h": 500,
+      "h": 205,
       "image": "assets/img/upper_platform_tile.png"
     },
     {
@@ -136,7 +145,7 @@ define([], function() {
       "x": 3825,
       "y": 600,
       "w": 180,
-      "h": 500,
+      "h": 125,
       "image": "assets/img/upper_platform_tile.png"
     }
     ],
