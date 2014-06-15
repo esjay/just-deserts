@@ -21,7 +21,7 @@ define(['lodash', 'crafty', '../hud'], function(_, Crafty, hud) {
     },
 
     decreaseThrist: function() {
-      this.thirst--;
+      this.thirst-=6;
       hud.pushThirst(this.thirst, defaultThirst);
       return this;
     },
