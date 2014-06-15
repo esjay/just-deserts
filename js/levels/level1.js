@@ -24,12 +24,8 @@ define([], function() {
       "x": 0,
       "y": 400,
       "w": 330,
-<<<<<<< HEAD
-      "h": 368,
+      "h": 330,
       "image": "assets/img/upper_platform_tile.png"
-=======
-      "h": 330
->>>>>>> 45cb4b82c4db67aefebca4ae219c1e725146a82b
     },
     {
       "x": 460,
@@ -41,14 +37,9 @@ define([], function() {
     {
       "x": 0,
       "y": 725,
-<<<<<<< HEAD
-      "w": 5000,
+      "w": 4000,
       "h": 43,
       "image": "assets/img/upper_platform_tile.png"
-=======
-      "w": 4000,
-      "h": 43
->>>>>>> 45cb4b82c4db67aefebca4ae219c1e725146a82b
     },
     {
       "x": 350,
