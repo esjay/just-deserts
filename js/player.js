@@ -80,7 +80,9 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 		  })
       .onHit('Spike', function() {
         die_next_cycle = true;
-		//this.reset();
+      })
+      .onHit('EndArea', function() {
+          Crafty.enterScene('GameOver', this.health);
       });
     },
 

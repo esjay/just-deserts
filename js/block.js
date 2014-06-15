@@ -2,7 +2,7 @@ define(['lodash', 'crafty'], function(_, Crafty) {
 
   Crafty.c('Block', {
     init: function() {
-      this.requires('2D, Canvas, Color, PGrav').color('red');
+      this.requires('2D, Canvas, Color, PGrav').color('#FFD87D');
     }
   });
 
@@ -16,13 +16,13 @@ define(['lodash', 'crafty'], function(_, Crafty) {
             .onHit("Player", function(target) {
               this.hitboxTarget = target[0].obj;
               if (this.contains(this.hitboxTarget.mbr())) {
-                  this.hitboxTarget.markAsShaded(target[0].overlap);
+                  this.hitboxTarget.markAsShaded(this.getId());
               } else {
-                this.hitboxTarget.markAsUnshaded();
+                this.hitboxTarget.markAsUnshaded(this.getId());
               }
             },
             function(target) {
-              this.hitboxTarget.markAsUnshaded();
+              this.hitboxTarget.markAsUnshaded(this.getId());
             });
         return createdBlock;
     }

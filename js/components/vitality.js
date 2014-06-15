@@ -1,14 +1,14 @@
-define(['crafty', '../hud'], function(Crafty, hud) {
+define(['lodash', 'crafty', '../hud'], function(_, Crafty, hud) {
 
   Crafty.c('Vitality', {
     thirst: 0,
-    health: 10000,
-    shaded: false,
+    health: 1000,
+    shadedBy: [],
 
     init: function() {
       this.requires('Collision')
           .bind('EnterFrame', function() {
-            if(!this.shaded) {
+            if(!this.isShaded()) {
               this.damageBy(1);
             }
             this.increaseThirst();
@@ -26,11 +26,16 @@ define(['crafty', '../hud'], function(Crafty, hud) {
       hud.pushHealth(this.health);
       return this;
     },
-    markAsShaded: function(value) {
-      this.shaded = value;
+    isShaded: function() {
+      return this.shadedBy.length > 0;
     },
-    markAsUnshaded: function() {
-      this.shaded = false;
+    markAsShaded: function(shadingEntity) {
+      if(!_.include(this.shadedBy, shadingEntity)) {
+        this.shadedBy.push(shadingEntity);
+      }
+    },
+    markAsUnshaded: function(shadingEntity) {
+      this.shadedBy = _.without(this.shadedBy, shadingEntity);
     },
     resetVitality: function() {
       this.thirst = 0;

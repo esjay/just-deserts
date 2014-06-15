@@ -5,7 +5,7 @@ define(['require', 'lodash', 'crafty', './player', './block', './spike'],
     height: 79,
     createWorld: function(worldData) {
       Crafty.init(1024, worldData.height);
-      Crafty.background('black');
+      Crafty.background('#5EE2FF');
       player.createPlayer(_.extend({ w: this.width, h: this.height }, worldData.start), worldData);
       _(worldData.platforms).each(function(platform) {
         block.createBlock(platform);
@@ -13,6 +13,7 @@ define(['require', 'lodash', 'crafty', './player', './block', './spike'],
       _(worldData.spikes).each(function(sp) {
         spike.createSpike(sp);
       });
+      Crafty.e('EndArea, Collision').attr(worldData.end);
 
       return worldData;
     }
