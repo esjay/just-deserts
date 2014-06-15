@@ -1,9 +1,10 @@
-define(['crafty', '../world', '../levels/level1'],
- function(Crafty, world, worldData) {
+define(['crafty', '../world', '../levels/level1', '../hud'],
+ function(Crafty, world, worldData, hud) {
   Game = {
 
     start: function() {
       world.createWorld(worldData);
+      hud.createText();
     }
   };
 

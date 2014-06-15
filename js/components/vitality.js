@@ -1,4 +1,4 @@
-define(['crafty'], function(Crafty) {
+define(['crafty', '../hud'], function(Crafty, hud) {
 
   Crafty.c('Vitality', {
     thirst: 0,
@@ -17,11 +17,13 @@ define(['crafty'], function(Crafty) {
 
     increaseThirst: function() {
       this.thirst++;
+      hud.pushThirst(this.thirst);
       return this;
     },
     damageBy: function(damageAmount) {
       damageAmount = damageAmount || 1;
       this.health -= damageAmount;
+      hud.pushHealth(this.health);
       return this;
     },
     markAsShaded: function(value) {
