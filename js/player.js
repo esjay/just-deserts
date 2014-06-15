@@ -11,18 +11,27 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
         canjump = false,
         yaccel = 0,
         reset_yaccel = false,
-		die_next_cycle = false;
+		dieing = false;
+		respawn_counter = 0;
         worldData = {};
 
       this.requires('2D, Canvas, Keyboard, Vitality, ScrollView, SpriteAnimation, character_gfx, PlayerSprite')
       .reel('PlayerRunning', 1000, 1, 0, 62)
 		  .bind('EnterFrame', function() //EnterFrame event is called once per cycle
 		  {
-			if (die_next_cycle)
-			{
-				die_next_cycle = false;
-				this.reset();
+			if (dieing)
+			{	
+				if(respawn_counter == 0){this.removeComponent("PlayerSprite", false);}
+				if(respawn_counter == 20)
+				{
+					this.addComponent("PlayerSprite");
+					respawn_counter = -1;
+					dieing = false;
+					this.reset();
+				}
+				respawn_counter += 1;
 			}
+			if(!dieing){
 			//Moves left and right
 			if(this.isDown('LEFT_ARROW'))
 			{
@@ -70,8 +79,7 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 			{
 				yaccel -= JUMPSPEED;
 				canjump = false;
-			}
-			console.log(die_next_cycle);
+			}}
 		  })
 		  .bind('KeyUp', function(e)
 		  {
@@ -81,7 +89,7 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 			}
 		  })
       .onHit('Spike', function() {
-        die_next_cycle = true;
+        dieing = true;
       })
       .onHit('EndArea', function() {
           Crafty.enterScene('GameOver', this.health);

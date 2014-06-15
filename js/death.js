@@ -9,10 +9,10 @@ define(['crafty'], function(Crafty){
     createDeath: function(attributes) {
 		var options = 
 	  {
-		maxParticles: 150,
+		maxParticles: 500,
 		size: 18,
 		sizeRandom: 4,
-		speed: 16,
+		speed: 40,
 		speedRandom: 1.2,
 		// Lifespan in frames
 		lifeSpan: 200,
@@ -33,17 +33,17 @@ define(['crafty'], function(Crafty){
 		duration: 20,
 		// Will draw squares instead of circle gradients
 		fastMode: false,
-		gravity: { x: 0, y: 0.4 },
+		gravity: { x: 0, y: 1 },
 		// sensible values are 0-3
 		jitter: 0
 	   }
 	   var lifetimer = 0;
            entity = Crafty.e('Death, Collision, Particles').attr(attributes)
-		  .particles(options)
+		   .particles(options)
 		  .bind('EnterFrame', function()
 		  {
 			lifetimer += 1;
-			if(lifetimer >= 21){this.destroy;}
+			if(lifetimer >= 81){this.destroy();}
 		  })
 		  ;
       if(attributes.flipped) entity.flip('Y')
