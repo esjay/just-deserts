@@ -1,7 +1,8 @@
 define(['crafty', './components/vitality', './components/scrollview'], function(Crafty) {
-  Crafty.sprite(33, 70, "assets/img/walkin.png", {
-      PlayerSprite: [2,0]
+  Crafty.sprite(56, 72, "assets/img/character-animation.png", {
+      PlayerSprite: [1,0]
   });
+
   Crafty.c("Player", {
 
     init: function() {
@@ -14,8 +15,10 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 		die_next_cycle = false;
         worldData = {};
 
-      this.requires('2D, Canvas, Keyboard, Vitality, ScrollView, SpriteAnimation, character_gfx, PlayerSprite')
-      .reel('PlayerRunning', 1000, 1, 0, 62)
+      this.requires('2D, Canvas, Keyboard, Vitality, ScrollView, SpriteAnimation, character_gfx, Delay, PlayerSprite')
+      .reel('PlayerJumping', 1000, 0, 0, 62)
+      .reel('PlayerWaiting', 1000, 0, 1, 62)
+      .reel('PlayerWalking', 1000, 0, 2, 62)
 		  .bind('EnterFrame', function() //EnterFrame event is called once per cycle
 		  {
 			if (die_next_cycle)
@@ -27,12 +30,30 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 			if(this.isDown('LEFT_ARROW'))
 			{
 				this.x -= DEFAULT_SPEED;
-				if(this.hit('PGrav')){this.x += DEFAULT_SPEED;}//Don't move if you will end up overlapping a wall
+        if(this.isPlaying('PlayerWalking')) {
+          this.resumeAnimation();
+        } else {
+          this.animate('PlayerWalking', -1);
+        }
+				if(this.hit('PGrav')){
+          this.animate('PlayerWalking', -1);
+          this.x += DEFAULT_SPEED;
+        }//Don't move if you will end up overlapping a wall
 			}
 			if(this.isDown('RIGHT_ARROW'))
 			{
+        if(canjump) {
+          if(this.isPlaying('PlayerWalking')) {
+            this.resumeAnimation();
+          } else {
+            this.animate('PlayerWalking', -1);
+          }
+        }
 				this.x += DEFAULT_SPEED;
-				if(this.hit('PGrav')){this.x -= DEFAULT_SPEED;}
+				if(this.hit('PGrav')){
+          this.animate('PlayerWalking', -1);
+          this.x -= DEFAULT_SPEED;
+        }
 			}
 			//Keeps character from going off course
 			if (this.x < 0){this.x = 0};
@@ -70,15 +91,24 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 			{
 				yaccel -= JUMPSPEED;
 				canjump = false;
+        this.animate('PlayerJumping', 1);
 			}
-			console.log(die_next_cycle);
 		  })
 		  .bind('KeyUp', function(e)
 		  {
-			if (e.key == Crafty.keys['UP_ARROW'] && yaccel < 0)
-			{
-				yaccel = 0;
-			}
+        if(this.isPlaying('PlayerJumping')) {
+          this.resumeAnimation()
+              .on("AnimationEnd", function() {
+                this.animate('PlayerWaiting', -1);
+              });
+        } else {
+          this.animate('PlayerWaiting', -1);
+        }
+
+  			if (e.key == Crafty.keys['UP_ARROW'] && yaccel < 0)
+  			{
+  				yaccel = 0;
+  			}
 		  })
       .onHit('Spike', function() {
         die_next_cycle = true;
@@ -103,8 +133,7 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
   return {
     createPlayer: function(attributes, worldData) {
       return Crafty.e('Player').attr(attributes).setWorldData(worldData)
-                .animate('PlayerRunning', -1)
-;
+      .animate('PlayerWaiting', -1);
     }
   };
 });
