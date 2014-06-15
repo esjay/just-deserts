@@ -17,7 +17,7 @@ define(['crafty'], function(Crafty) {
 			if(this.isDown('LEFT_ARROW'))
 			{
 				this.x -= DEFAULT_SPEED;
-				if(this.hit('PGrav')){this.x += DEFAULT_SPEED};
+				if(this.hit('PGrav')){this.x += DEFAULT_SPEED};//Don't move if you will end up overlapping a wall
 			}
 			if(this.isDown('RIGHT_ARROW'))
 			{
@@ -30,10 +30,11 @@ define(['crafty'], function(Crafty) {
 			if (this.x > LEVEL_WIDTH + this.w){this.x = LEVEL_WIDTH + this.w};
 			//Gravity
 			yaccel += GRAVITY_CONSTANT;
+			//This block handles hitting a platform from the top or bottom
 			if (!this.hit('PGrav'))
 			{
 				this.y += yaccel;
-				//If we're falling into an object, we need to dig ourselves out
+				//If we're falling into an object, we need to dig ourselves out, and vice versa
 				while(this.hit('PGrav'))
 				{
 					reset_yaccel = true;
