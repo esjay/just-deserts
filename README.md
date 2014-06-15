@@ -25,6 +25,14 @@
       "w": "<Number>",
       "h": "<Number>"
     }
+  ],
+  "spikes": [
+    {
+      "x": "<Number>",
+      "y": "<Number>",
+      "w": "<Number>",
+      "h": "<Number>"
+    }
   ]
 }
 ```
