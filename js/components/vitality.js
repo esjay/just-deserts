@@ -11,7 +11,7 @@ define(['lodash', 'crafty', '../hud'], function(_, Crafty, hud) {
       this.requires('Collision')
           .bind('EnterFrame', function() {
             if(!this.isShaded()) {
-              this.damageBy(1.9);
+              this.damageBy(1.85);
             }
             this.increaseThirst();
           });
