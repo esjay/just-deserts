@@ -16,6 +16,7 @@ define(['lodash', 'crafty', '../hud'], function(_, Crafty, hud) {
             this.decreaseThrist();
             if (this.health < 0 || this.thirst < 0) {
               this.reset();
+			  Crafty.audio.play("scream");
             }
           });
     },
