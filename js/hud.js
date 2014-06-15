@@ -22,7 +22,7 @@ define(['crafty'], function(Crafty) {
 
     },
     pushHealth: function(healthVal) {
-      this.healthEl.text("Health: " + healthVal);
+      this.healthEl.text("Health: " + Math.round(healthVal));
     }
   };
 });
