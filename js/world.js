@@ -5,7 +5,7 @@ define(['require', 'lodash', 'crafty', './player', './block', './spike'],
     height: 79,
     createWorld: function(worldData) {
       Crafty.init(1024, worldData.height);
-      Crafty.background('#5EE2FF');
+      Crafty.background('url(assets/img/background.png)');
       player.createPlayer(_.extend({ w: this.width, h: this.height }, worldData.start), worldData);
       _(worldData.platforms).each(function(attributes) {
         var collisionAttributes = _.extend({}, attributes, {y: attributes.y + attributes.h, h: 500});

@@ -1,8 +1,8 @@
 define(['lodash', 'crafty'], function(_, Crafty) {
-
+  Crafty.sprite('assets/img/upper_platform_tile.png', { platform_gfx: [0, 0, 400, 25] });
   Crafty.c('Block', {
     init: function() {
-      this.requires('2D, Canvas, Color, PGrav').color('#FFD87D');
+      this.requires('2D, Canvas, platform_gfx, PGrav');
     }
   });
 
