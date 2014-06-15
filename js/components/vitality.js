@@ -2,7 +2,7 @@ define(['crafty', '../hud'], function(Crafty, hud) {
 
   Crafty.c('Vitality', {
     thirst: 0,
-    health: 10000,
+    health: 1000,
     shaded: false,
 
     init: function() {

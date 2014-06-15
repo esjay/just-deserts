@@ -2,7 +2,7 @@ define(['lodash', 'crafty'], function(_, Crafty) {
 
   Crafty.c('Block', {
     init: function() {
-      this.requires('2D, Canvas, Color, PGrav').color('red');
+      this.requires('2D, Canvas, Color, PGrav').color('#FFD87D');
     }
   });
 
