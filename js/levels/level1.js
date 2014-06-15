@@ -24,6 +24,7 @@ define([], function() {
       "y": 400,
       "w": 330,
       "h": 330
+	  //largebox1
     },
     {
       "x": 460,
@@ -36,6 +37,7 @@ define([], function() {
       "y": 725,
       "w": 4000,
       "h": 43
+	  //ground
     },
     {
       "x": 350,
@@ -60,12 +62,14 @@ define([], function() {
       "y": 550,
       "w": 90,
       "h": 175
+	  //smallbox1
     },
     {
       "x": 935,
       "y": 550,
       "w": 90,
       "h": 175
+	  //smallbox1
     },
     {
       "x": 1275,
@@ -108,18 +112,21 @@ define([], function() {
       "y": 520,
       "w": 90,
       "h": 205
+	  //smallbox1
 	},
     {
       "x": 3535,
       "y": 530,
       "w": 90,
       "h": 105
+	  //smallbox1
 	},
     {
       "x": 3825,
       "y": 600,
       "w": 180,
       "h": 125
+	  //smallbox2
 	}
     ],
     "spikes": [
