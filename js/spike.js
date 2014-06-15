@@ -8,7 +8,10 @@ define(['crafty'], function(Crafty){
 
   return {
     createSpike: function(attributes) {
-      return Crafty.e('Spike, Collision').attr(attributes).collision(new Crafty.polygon([0,0],[attributes.w,0],[attributes.w *.5, attributes.h]));
+      var hitbox = new Crafty.polygon([0,0], [attributes.w,0], [attributes.w * 0.5, attributes.h]),
+          entity = Crafty.e('Spike, Collision').attr(attributes).collision(hitbox);
+      if(attributes.flipped) entity.flip('Y')
+      return entity;
     }
   };
 });
