@@ -18,8 +18,8 @@ define(['crafty'], function(Crafty) {
           });
     },
 
-    _percentageIntoMap: function(offset) {
-      return (this.x + offset) / this.levelWidth;
+    resetScroll: function() {
+      this.viewport.scroll('x', 0);
     }
   });
 

@@ -72,13 +72,15 @@ define(['crafty', './components/vitality', './components/scrollview'], function(
 			}
 		  })
       .onHit('Spike', function() {
-
+        this.reset();
       });
     },
 
     reset: function() {
       this.resetVitality();
-
+      this.resetScroll();
+      this.x = this.worldData.start.x;
+      this.y = this.worldData.start.y;
     },
     setWorldData: function(data) {
       this.worldData = data;
