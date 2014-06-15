@@ -1,16 +1,17 @@
-define(['crafty', './components/vitality'], function(Crafty) {
+define(['crafty', './components/vitality', './components/scrollview'], function(Crafty) {
 
   Crafty.c("Player", {
 
     init: function() {
-	  var GRAVITY_CONSTANT = .5;
-	  var DEFAULT_SPEED = 5;
-	  var levelWidth = 1820;
-	  var JUMPSPEED = 14;
-	  var canjump = false;
-	  var yaccel = 0;
-	  var reset_yaccel = false;
-      this.requires('2D, Canvas, Color, Keyboard, Vitality')
+	  var GRAVITY_CONSTANT = 0.5,
+        DEFAULT_SPEED = 5,
+        levelWidth = 1820,
+        JUMPSPEED = 14,
+        canjump = false,
+        yaccel = 0,
+        reset_yaccel = false;
+
+      this.requires('2D, Canvas, Color, Keyboard, Vitality, ScrollView')
           .color('green')
 		  .bind('EnterFrame', function() //EnterFrame event is called once per cycle
 		  {
@@ -19,17 +20,17 @@ define(['crafty', './components/vitality'], function(Crafty) {
 			{
 				this.x -= DEFAULT_SPEED;
 				if(this.hit('PGrav')){this.x += DEFAULT_SPEED;}//Don't move if you will end up overlapping a wall
-				if (400 <= this.x) {
-					Crafty.viewport.scroll('x', Crafty.viewport.x + DEFAULT_SPEED);
-				}
+				// if (400 <= this.x) {
+				// 	Crafty.viewport.scroll('x', Crafty.viewport.x + DEFAULT_SPEED);
+				// }
 			}
 			if(this.isDown('RIGHT_ARROW'))
 			{
 				this.x += DEFAULT_SPEED;
 				if(this.hit('PGrav')){this.x -= DEFAULT_SPEED;}
-				if (400 <= this.x && (this.x + this.w) - 1000 <= this.levelWidth) {
-					Crafty.viewport.scroll('x', Crafty.viewport.x - DEFAULT_SPEED);
-				}
+				// if (400 <= this.x && (this.x + this.w) - 1000 <= this.levelWidth) {
+				// 	Crafty.viewport.scroll('x', Crafty.viewport.x - DEFAULT_SPEED);
+				// }
 			}
 			//Keeps character from going off course
 			if (this.x < 0){this.x = 0};
