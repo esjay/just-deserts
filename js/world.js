@@ -13,6 +13,11 @@ define(['require', 'lodash', 'crafty', './player', './block', './spike'],
       _(worldData.spikes).each(function(sp) {
         spike.createSpike(sp);
       });
+      _(worldData.platforms).each(function(attributes) {
+        var collisionAttributes = _.extend({}, attributes, {y: attributes.y + attributes.h, h: 500});
+        Crafty.e('2D, Canvas, Color, Tint').attr(collisionAttributes).tint("#808080", 0.5);
+      });
+      
       Crafty.e('EndArea, Collision').attr(worldData.end);
 
       return worldData;
