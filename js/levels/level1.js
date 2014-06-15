@@ -1,13 +1,13 @@
 define([], function() {
   return {
-    "width": 4010,
+    "width": 4000,
     "height": 768,
     "start": {
       "x": 30,
       "y": 320
     },
     "end": {
-      "x": 4010,
+      "x": 4000,
       "y": 0,
       "w": 50,
       "h": 768
