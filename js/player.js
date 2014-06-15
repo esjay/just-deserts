@@ -110,6 +110,11 @@ define(['crafty', './components/vitality', './components/scrollview'], function 
 		  })
 		  .bind('KeyUp', function(e)
 		  {
+        if (e.key == Crafty.keys['UP_ARROW'] && yaccel < 0)
+        {
+          yaccel = 0;
+        }
+
         if (this.isPlaying('PlayerJumping')) {
           this.resumeAnimation()
               .on("AnimationEnd", function() {
@@ -119,10 +124,6 @@ define(['crafty', './components/vitality', './components/scrollview'], function 
           this.animate('PlayerWaiting', -1);
         }
 
-  			if (e.key == Crafty.keys['UP_ARROW'] && yaccel < 0)
-  			{
-  				yaccel = 0;
-  			}
 		  })
       .onHit('Spike', function() {
         dieing = true;
