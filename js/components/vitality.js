@@ -1,5 +1,5 @@
 define(['lodash', 'crafty', '../hud'], function(_, Crafty, hud) {
-  var defaultThirst = 0,
+  var defaultThirst = 10000,
       defaultHealth = 1000;
 
   Crafty.c('Vitality', {
@@ -13,22 +13,22 @@ define(['lodash', 'crafty', '../hud'], function(_, Crafty, hud) {
             if(!this.isShaded()) {
               this.damageBy(1.85);
             }
-            this.increaseThirst();
-            if (this.health < 0) {
+            this.decreaseThrist();
+            if (this.health < 0 || this.thirst < 0) {
               this.reset();
             }
           });
     },
 
-    increaseThirst: function() {
-      this.thirst++;
-      hud.pushThirst(this.thirst);
+    decreaseThrist: function() {
+      this.thirst--;
+      hud.pushThirst(this.thirst, defaultThirst);
       return this;
     },
     damageBy: function(damageAmount) {
       damageAmount = damageAmount || 1;
       this.health -= damageAmount;
-      hud.pushHealth(this.health);
+      hud.pushHealth(this.health, defaultHealth);
       return this;
     },
     isShaded: function() {

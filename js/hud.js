@@ -11,7 +11,6 @@ define(['crafty'], function(Crafty) {
                       .bind("EnterFrame", function() {
                         this.attr({ x: x -(Crafty.viewport.x), y: thirstY });
                       });
-      var widthPercent = "" + ((10000 / 10000) * 100) + "%";
       this.healthEl = Crafty.e("2D, DOM, HTML")
                 .attr({ x: x -(Crafty.viewport.x), y: healthY, w: width})
                 .replace("<div id=\"progressbar\"><div class=\"health\"></div></div>")
@@ -20,12 +19,12 @@ define(['crafty'], function(Crafty) {
                 });
     },
 
-    pushThirst: function(thirstVal) {
-      var val = Math.round((thirstVal / 1000) * 100);
+    pushThirst: function(thirstVal, max) {
+      var val = Math.round((thirstVal / max) * 100);
       document.getElementsByClassName('thrist')[0].style.width = "" + val + "%";
     },
-    pushHealth: function(healthVal) {
-      var val = Math.round((healthVal / 1000) * 100);
+    pushHealth: function(healthVal, max) {
+      var val = Math.round((healthVal / max) * 100);
       document.getElementsByClassName('health')[0].style.width = "" + val + "%";
     }
   };
