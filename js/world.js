@@ -13,6 +13,7 @@ define(['require', 'lodash', 'crafty', './player', './block', './spike'],
       _(worldData.spikes).each(function(sp) {
         spike.createSpike(sp);
       });
+      Crafty.e('EndArea, Collision').attr(worldData.end);
 
       return worldData;
     }
