@@ -21,7 +21,8 @@ define(['crafty', './components/vitality', './components/scrollview'], function 
 			"assets/sfx/WilhelmScream.ogg"
 		]);
 
-      this.requires('2D, Canvas, Keyboard, Vitality, ScrollView, SpriteAnimation, character_gfx, Delay, PlayerSprite')
+      this.requires('2D, Canvas, Keyboard, Vitality, ScrollView, SpriteAnimation, character_gfx, Delay, PlayerSprite, Collision')
+      .collision(new Crafty.polygon([0,0], [30,0], [30,77], [0,77]))
       .reel('PlayerJumping', 1000, 0, 0, 62)
       .reel('PlayerWaiting', 1000, 0, 1, 62)
       .reel('PlayerWalking', 1000, 0, 2, 62)
