@@ -25,7 +25,7 @@ define(['crafty', './components/vitality', './components/scrollview'], function 
       .collision(new Crafty.polygon([0,0], [30,0], [30,77], [0,77]))
       .reel('PlayerJumping', 1000, 0, 0, 62)
       .reel('PlayerWaiting', 1000, 0, 1, 62)
-      .reel('PlayerWalking', 1000, 0, 2, 62)
+      .reel('PlayerWalking', 300, 0, 2, 62)
 		  .bind('EnterFrame', function() {
 			if (dieing) {
 				if (respawn_counter == 0)
